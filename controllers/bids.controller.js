@@ -37,3 +37,27 @@ exports.create = async (req, res) => {
     });
   }
 };
+
+exports.getTrending = async (req, res) => {
+  try {
+    const { category } = req.query;
+
+    const filter = category ? { category } : {};
+
+    const getData = await Bids.find(filter).sort({ createdAt: -1 });
+
+    return res.status(StatusCodes.OK).json({
+      errorcode: 0,
+      status: true,
+      message: "Get Trending Successfully",
+      data: getData,
+    });
+  } catch (error) {
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      errorcode: 5,
+      status: false,
+      message: error.message,
+      data: error,
+    });
+  }
+};
