@@ -1,11 +1,11 @@
-const Caricatures = require("../models/caricatures.model");
+const Bids = require("../models/bids.model");
 const { StatusCodes } = require("http-status-codes");
 
 exports.create = async (req, res) => {
   try {
-    const { image, name, productId, authorProfilePic, authorName, authorEmail, currentBid, auctionTime, likes } = req.body;
+    const { image, name, productId, authorProfilePic, authorName, authorEmail, currentBid, auctionTime, likes, category } = req.body;
 
-    const newDetails = new Caricatures({
+    const newDetails = new Bids({
       image,
       name,
       productId,
@@ -17,6 +17,7 @@ exports.create = async (req, res) => {
       currentBid: currentBid,
       auctionTime: auctionTime,
       likes,
+      category,
     });
 
     await newDetails.save();
@@ -24,7 +25,7 @@ exports.create = async (req, res) => {
     return res.status(StatusCodes.CREATED).json({
       errorCode: 0,
       status: true,
-      message: "Caricatures added successfully",
+      message: "Bids added successfully",
       data: newDetails,
     });
   } catch (error) {

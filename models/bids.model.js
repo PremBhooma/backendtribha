@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const caricaturesSchema = new Schema(
+const bidsSchema = new Schema(
   {
     image: {
       type: String,
@@ -41,10 +41,14 @@ const caricaturesSchema = new Schema(
       type: Boolean,
       default: false,
     },
+    category: {
+      type: String,
+      enum: ["music", "collectibies", "utility"],
+    },
   },
   {
     timestamps: true,
   }
 );
 
-module.exports = mongoose.model("Caricatures", caricaturesSchema);
+module.exports = mongoose.model("Bids", bidsSchema);

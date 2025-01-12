@@ -14,9 +14,11 @@ app.use(
 
 const userRouter = require("./routes/user.route");
 const caricaturesRouter = require("./routes/caricatures.route");
+const bidsRouter = require("./routes/bids.route");
 
 app.use("/api/user", userRouter);
 app.use("/api/caricatures", caricaturesRouter);
+app.use("/api/bids", bidsRouter);
 
 app.get("/", (req, res) => {
   res.send("API is running");
