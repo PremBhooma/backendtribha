@@ -44,7 +44,7 @@ exports.getTrending = async (req, res) => {
 
     const filter = category ? { category } : {};
 
-    const getData = await Bids.find(filter).sort({ createdAt: -1 });
+    const getData = await Bids.find(filter).sort({ createdAt: 1 });
 
     return res.status(StatusCodes.OK).json({
       errorcode: 0,
