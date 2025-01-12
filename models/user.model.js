@@ -3,10 +3,6 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
   {
-    profilePic: {
-      type: String,
-      required: true,
-    },
     name: {
       type: String,
       require: true,
