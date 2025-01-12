@@ -23,7 +23,7 @@ function generateDefaultUsername(name) {
 
 exports.create = async (req, res) => {
   try {
-    const { name, email, number, password } = req.body;
+    const { name, email, number, profilePic, password } = req.body;
 
     const userExist = await User.findOne({ email }).lean();
     if (userExist) {
@@ -42,6 +42,7 @@ exports.create = async (req, res) => {
 
     const newUser = new User({
       name,
+      profilePic,
       username: uniqueUsername,
       email,
       number,
