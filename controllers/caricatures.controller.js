@@ -1,10 +1,11 @@
 const Caricatures = require("../models/caricatures.model");
+const { StatusCodes } = require("http-status-codes");
 
 exports.create = async (req, res) => {
   try {
     const { image, name, productId, authorProfilePic, authorName, authorEmail, currentBid, auctionTime } = req.body;
 
-    const newDetails = new User({
+    const newDetails = new Caricatures({
       image,
       name,
       productId,
