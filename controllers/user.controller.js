@@ -70,7 +70,6 @@ exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Find existing admin
     const existingUser = await User.findOne({ email }).lean();
     if (!existingUser) {
       return res.status(StatusCodes.FORBIDDEN).json({
